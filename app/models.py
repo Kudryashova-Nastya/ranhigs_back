@@ -7,11 +7,6 @@ STATUS_SESSION = [
     (2, 'Неактивно'),
     (3, 'На паузе')
 ]
-# class StatusSession(models.Model):
-#     name = models.CharField(max_length=50)
-#
-#     def __str__(self):
-#         return self.name
 
 
 class Session(models.Model):
@@ -20,6 +15,7 @@ class Session(models.Model):
     link = models.CharField(max_length=255, verbose_name="Ссылка")
     password = models.CharField(max_length=255, verbose_name="Пароль")
     datetimeStart = models.DateTimeField(auto_now_add=True, verbose_name="Начало")
+    stage = models.PositiveSmallIntegerField(verbose_name="Этап", default=1)
     status = models.PositiveSmallIntegerField(choices=STATUS_SESSION, verbose_name="Статус", default=1)
     timer = models.TimeField(verbose_name="Таймер")
     timerIsActive = models.BooleanField(verbose_name="Активность таймера")

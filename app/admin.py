@@ -5,7 +5,9 @@ from django.utils.dateformat import format
 
 class SessionAdmin(admin.ModelAdmin):
 
-    list_display = ('id', 'name', 'teamCount', 'link', 'datetimeStart', 'status')
+    # datetimeStart.admin_order_field = 'timefield'
+    # datetimeStart.short_description = 'Precise Time'
+    list_display = ('id', 'name', 'teamCount', 'link', 'datetimeStart', 'status', 'stage')
     search_fields = ('name',)
     list_filter = ('teamCount', 'status')
 
