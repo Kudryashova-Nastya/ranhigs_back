@@ -1,8 +1,20 @@
 from django.contrib import admin
+from app.models import Session, Team
+from django.utils.dateformat import format
 
-from app.models import Session, StatusSession, Team
+
+class SessionAdmin(admin.ModelAdmin):
+
+    list_display = ('id', 'name', 'teamCount', 'link', 'datetimeStart', 'status')
+    search_fields = ('name',)
+    list_filter = ('teamCount', 'status')
 
 
-admin.site.register(Session)
-admin.site.register(StatusSession)
-admin.site.register(Team)
+class TeamAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'userCount', 'pincode', 'sessionID')
+    search_fields = ('name',)
+    list_filter = ('userCount', 'sessionID')
+
+
+admin.site.register(Session, SessionAdmin)
+admin.site.register(Team, TeamAdmin)
